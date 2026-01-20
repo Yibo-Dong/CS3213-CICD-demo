@@ -4,7 +4,7 @@
 This is a demo project for teaching GitHub Actions CI/CD in CS3213.
 
 ## How to Run
-Open `index.html` in your browser to see the demo page.
+Open `site/index.html` in your browser to see the demo page.
 
 ## CI/CD Notes
 - CI runs on every pull request and push.

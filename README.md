@@ -1,83 +1,66 @@
-# CS3213-CICD-demo
-This repository demonstrates how to use GitHub Actions to set up a basic but realistic CI/CD pipeline for a student web project.
-It is designed as part of NUS CS3213 to help students understand how CI/CD fits into their project workflow.
+# NextBus CI/CD Demo
 
-The example project is a simplified “NextBus-style” web application, but the focus of this repository is on the automation pipeline rather than the application logic.
+This repository is a demonstration of using GitHub Actions for CI/CD, designed as part of NUS CS3213.  
+It includes both CI checks and a CD workflow that deploys a static site to GitHub Pages.
 
-## Repository Overview
+---
 
-This repository contains:
+## Setup
 
-* A simple static web application
-* Automated checks that run on every pull request
+1. Fork this repo into your own GitHub account.  
+2. Enable GitHub Actions on the forked repo.  
+3. DO NOT fork it into the course GitHub organization as we already have one fork here.  
 
-## Getting Started
+---
 
-Fork this repository into your own GitHub account.
+## Demo: Hello World
 
-Enable GitHub Actions for the forked repository.
+The workflow `.github/workflows/ci.yml` contains a simple job `helloworld` that prints "Hello World".  
+Take a look at the file to understand how it is configured, then navigate to the **Actions** tab on GitHub to see it run.
 
-Do NOT fork it into the course GitHub organization unless instructed.
+---
 
-## Continuous Integration (CI)
+## Demo: Check Filename Prefix
 
-The CI workflow runs automatically when:
+The job `check-filename-prefix` verifies that all source files in `src/` start with the prefix `NextBus`.  
 
-* A pull request is opened or updated
+1. Push a commit where a file does not follow the prefix rule.  
+2. Check the **Actions** tab → the job will fail.  
+3. Rename the file to comply with the rule and push again.  
+4. Verify that the job now passes.
 
-* A commit is pushed to the repository
+---
 
-The CI checks include:
+## Exercise: Check Documentation
 
-* Basic sanity checks (repository structure)
+The job `check-docs` verifies that `Documentation.md` exists in the root directory and is not empty.  
 
-* Documentation checks
+- The actual check logic is implemented in `scripts/check_docs.py`.  
+- To complete the exercise, execute this script in your workflow.  
+- Observe how the job fails if `Documentation.md` is missing or empty, and passes after fixing it.
 
-* Naming convention checks for project files
+---
 
-These checks are designed to reflect common requirements in student projects, such as having proper documentation and consistent file naming.
+## Demo: Continuous Deployment (CD)
 
-## Continuous Deployment (CD)
+The workflow `.github/workflows/pages.yml` demonstrates CD by deploying the static site to GitHub Pages.  
 
-When changes are merged into the main branch:
+1. Make a change in `site/` or `index.html`.  
+2. Push to the `main` branch.  
+3. The `deploy` job will automatically run, upload the artifact, and deploy the site.  
+4. Refresh the GitHub Pages URL to see your changes live.  
 
-* The project is automatically built
+> Notes:  
+> - The deploy job uses the required environment `github-pages`.  
+> - This illustrates how CD automatically ships CI-verified code to production.  
+> - No manual deployment steps are needed.
 
-* The latest version is deployed to GitHub Pages
+---
 
-* The deployed site can be accessed via a public URL
+## Post Scriptum: Self-Hosted Runner
 
-This simulates a real-world deployment workflow for frontend projects.
+GitHub has a limited quota of Actions runtime for private repositories.  
+For CS3213, we sometimes use self-hosted runners served by our course servers.  
 
-## Exercises
-
-### Exercise 1: Understanding CI
-
-Inspect the file .github/workflows/ci.yml.
-Identify:
-
-* When the workflow is triggered
-
-* What jobs are defined
-
-* What each job checks
-
-### Exercise 2: Failing and Fixing a CI Check
-
-* Rename Documentation.md to documentation.md.
-
-* Push the change and observe the CI failure.
-
-* Rename it back to Documentation.md and verify that the CI passes.
-
-### Exercise 3: Extending the CI
-
-* Add a new CI check to ensure that:
-
-* All JavaScript files in src/ are non-empty
-
-Hints:
-
-* Add a script under scripts/
-
-* Invoke it from the CI workflow
+- To use a self-hosted runner, replace `runs-on: ubuntu-latest` with `runs-on: self-hosted` in your workflow.  
+- Self-hosted runners are only available for private repositories in our course organization.

@@ -1,35 +1,38 @@
 name: CI
 
 on:
-  pull_request:
-  push:
+  pull_request:   # Trigger CI on pull requests
+  push:           # Trigger CI on push events
 
 jobs:
-# Demo: A simple job that prints "Hello World"
+  # Demo: A simple job that prints "Hello World"
   helloworld:
     name: Print Hello World
     # Describes the environment on which this job should run
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest   
     # Different steps of this job
     steps:
-      - name: hello
-        # The CLI command(s) for this job
-        run: echo "Hello World"
-        
-  check-docs:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Print greeting
+        run: echo "Hello World"   # Command to execute
 
-      - name: Run Documentation Check
-        run: python3 scripts/check_docs.py
-
+  # Demo: Check if source file names have the required prefix
   check-filename-prefix:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4   # Checkout the current branch
 
       - name: Run Filename Prefix Check
-        run: python3 scripts/check_filename_prefix.py
+        run: python3 scripts/check_filename_prefix.py   # Execute filename check
+
+  # Exercise: Check if Documentation.md exists and is not empty
+  check-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4   # Checkout the current branch
+
+      - name: Run Documentation Check
+        run: #TODO: Add your test here (simply call the python file we provided)
+
+  

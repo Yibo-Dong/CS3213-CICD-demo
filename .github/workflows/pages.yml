@@ -3,27 +3,28 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main   # Trigger deployment on push to main branch
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: read   # Required to read repository content
+  pages: write     # Required to deploy to GitHub Pages
+  id-token: write  # Required for authentication
 
 jobs:
+  # Deploy the site to GitHub Pages
   deploy:
     environment:
-      name: github-pages
-    runs-on: ubuntu-latest
+      name: github-pages   # The environment for this deployment
+    runs-on: ubuntu-latest  # Runner environment
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4   # Get the latest code from the main branch
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: site   # The folder containing static files to deploy
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v4   # Deploy the uploaded artifact
