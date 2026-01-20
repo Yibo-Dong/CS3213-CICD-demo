@@ -10,7 +10,6 @@ This repository contains:
 
 * A simple static web application
 * Automated checks that run on every pull request
-* Automatic deployment to GitHub Pages when changes are merged into main
 
 ## Getting Started
 
