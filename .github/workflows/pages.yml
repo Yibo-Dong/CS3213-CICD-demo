@@ -13,6 +13,7 @@ permissions:
 jobs:
   # Deploy the site to GitHub Pages
   deploy:
+    needs: [ci]
     environment:
       name: github-pages   # The environment for this deployment
     runs-on: ubuntu-latest  # Runner environment
