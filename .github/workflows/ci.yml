@@ -5,6 +5,17 @@ on:
   push:
 
 jobs:
+# Demo: A simple job that prints "Hello World"
+  helloworld:
+    name: Print Hello World
+    # Describes the environment on which this job should run
+    runs-on: ubuntu-latest
+    # Different steps of this job
+    steps:
+      - name: hello
+        # The CLI command(s) for this job
+        run: echo "Hello World"
+        
   check-docs:
     runs-on: ubuntu-latest
     steps:
