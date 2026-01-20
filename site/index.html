@@ -3,11 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>NextBus CI/CD Demo</title>
+  <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
-  <h1>NextBus CI/CD Demo</h1>
-  <p id="bus-info">Loading next bus info...</p>
+  <div class="app">
+    <div class="header">
+      <h1>NextBus</h1>
+    </div>
 
-  <script src="src/app.js"></script>
+    <div class="bus-card">
+      <div class="route" id="route">Loading route...</div>
+      <div class="eta">
+        <span id="minutes">--</span>
+        <span class="unit">min</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="src/CS3213_app.js"></script>
 </body>
 </html>

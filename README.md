@@ -1,4 +1,4 @@
-# NextBus CI/CD Demo
+# CS3213 CI/CD Demo
 
 This repository is a demonstration of using GitHub Actions for CI/CD, designed as part of NUS CS3213.  
 It includes both CI checks and a CD workflow that deploys a static site to GitHub Pages.

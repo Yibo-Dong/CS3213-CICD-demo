@@ -1,10 +1,15 @@
 // app.js - demo frontend logic
-document.addEventListener("DOMContentLoaded", () => {
-  const busInfo = document.getElementById("bus-info");
 
-  // Demo: static next bus info
-  const nextBus = getNextBus();
-  busInfo.textContent = `Next bus (${nextBus.route}) arriving in ${nextBus.minutes} minutes.`;
+document.addEventListener("DOMContentLoaded", () => {
+  const routeEl = document.getElementById("route");
+  const minutesEl = document.getElementById("minutes");
+
+  // Simulate loading delay
+  setTimeout(() => {
+    const nextBus = getNextBus();
+    routeEl.textContent = `Route: ${nextBus.route}`;
+    minutesEl.textContent = nextBus.minutes;
+  }, 800);
 });
 
 function getNextBus() {
