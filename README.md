@@ -45,7 +45,7 @@ The job `check-docs` verifies that `Documentation.md` exists in the root directo
 
 The workflow `.github/workflows/pages.yml` demonstrates CD by deploying the static site to GitHub Pages.  
 
-1. Make a change in `site/` or `index.html`.  
+1. Make a change in `src/` or `index.html`.  
 2. Push to the `main` branch.  
 3. The `deploy` job will automatically run, upload the artifact, and deploy the site.  
 4. Refresh the GitHub Pages URL to see your changes live.  
