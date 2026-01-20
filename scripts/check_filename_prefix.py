@@ -1,7 +1,7 @@
 import os
 import sys
 
-required_prefix = "NextBus"
+required_prefix = "CS3213"
 directory_to_check = "src"
 
 for file in os.listdir(directory_to_check):
