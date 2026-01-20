@@ -2,7 +2,7 @@ import os
 import sys
 
 required_prefix = "CS3213"
-directory_to_check = "site/src"
+directory_to_check = "src"
 
 for file in os.listdir(directory_to_check):
     if file.endswith(".js") and not file.startswith(required_prefix):
