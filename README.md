@@ -22,7 +22,7 @@ Take a look at the file to understand how it is configured, then navigate to the
 
 ## Demo: Check Filename Prefix
 
-The job `check-filename-prefix` verifies that all source files in `src/` start with the prefix `NextBus`.  
+The job `check-filename-prefix` verifies that all source files in `src/` start with the prefix `CS3213`.  
 
 1. Push a commit where a file does not follow the prefix rule.  
 2. Check the **Actions** tab → the job will fail.  
@@ -56,11 +56,3 @@ The workflow `.github/workflows/pages.yml` demonstrates CD by deploying the stat
 > - No manual deployment steps are needed.
 
 ---
-
-## Post Scriptum: Self-Hosted Runner
-
-GitHub has a limited quota of Actions runtime for private repositories.  
-For CS3213, we sometimes use self-hosted runners served by our course servers.  
-
-- To use a self-hosted runner, replace `runs-on: ubuntu-latest` with `runs-on: self-hosted` in your workflow.  
-- Self-hosted runners are only available for private repositories in our course organization.
